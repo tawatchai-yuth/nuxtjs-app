@@ -25,19 +25,11 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-3"
-          label="อัพโหลดรูปภาพ:"
-          label-for="input-3"
-        >
-          <b-form-input
-            id="input-3"
-            v-model="form.upImage"
-            type="text"
-            placeholder="อัพโหลดรูปภาพ"
-            required
-          ></b-form-input>
-        </b-form-group>
+        <!-- <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div> -->
+
+        <!-- Plain mode -->
+        <!-- <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
+        <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div> -->
 
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -56,9 +48,11 @@
         form: {
           title: '',
           description: '',
-          upImage: '',
+          image: ''
         },
-        show: true
+        show: true,
+        file1: null,
+        file2: null
       }
     },
     methods: {
@@ -71,7 +65,7 @@
         // Reset our form values
         this.form.email = ''
         this.form.description = ''
-        this.form.upImage = ''
+        this.form.file2 = ''
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {

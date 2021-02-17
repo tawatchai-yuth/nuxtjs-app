@@ -1,24 +1,28 @@
 {
-  "name": "nuxtjs-app",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
-  },
-  "dependencies": {
-    "@nuxtjs/axios": "^5.12.5",
-    "bootstrap": "^4.6.0",
-    "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.8.3",
-    "nuxt": "^2.14.12",
-    "vue": "^2.6.12"
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
-  }
+    "name": "nuxtjs-app",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "nodemon src/server.js -e js,graphql,gql",
+        "build": "nuxt build",
+        "start": "nodemon server.js",
+        "generate": "nuxt generate"
+    },
+    "dependencies": {
+        "@nuxtjs/axios": "^5.12.5",
+        "bootstrap": "^4.6.0",
+        "bootstrap-vue": "^2.21.2",
+        "core-js": "^3.8.3",
+        "express": "^4.17.1",
+        "mongodb": "^3.6.4",
+        "morgan": "^1.10.0",
+        "nuxt": "^2.14.12",
+        "vue": "^2.6.12"
+    },
+    "devDependencies": {
+        "eslint-config-prettier": "^7.2.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "nodemon": "^2.0.7",
+        "prettier": "^2.2.1"
+    }
 }
