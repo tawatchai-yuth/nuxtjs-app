@@ -21,6 +21,7 @@ const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("mongodb database connection established successfully");
 });
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
