@@ -1,0 +1,7 @@
+
+"scripts": {
+        "dev": "nodemon src/server.js -e js,graphql,gql",
+        "build": "nuxt build",
+        "start": "nodemon server.js",
+        "generate": "nuxt generate"
+    },
