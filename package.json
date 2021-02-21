@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "nuxt",
+        "dev": "nodemon src/server.js -e js,graphql,gql",
         "build": "nuxt build",
-        "start": "nuxt start",
+        "start": "nodemon server.js",
         "generate": "nuxt generate"
     },
     "dependencies": {
@@ -22,7 +22,9 @@
         "morgan": "^1.10.0",
         "multer": "^1.4.2",
         "nuxt": "^2.14.12",
-        "vue": "^2.6.12"
+        "nuxt-sweetalert2": "^1.0.0",
+        "vue": "^2.6.12",
+        "vue-sweetalert2": "^4.2.0"
     },
     "devDependencies": {
         "eslint-config-prettier": "^7.2.0",

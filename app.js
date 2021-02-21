@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/products');
 const orderRouters = require('./api/routes/orders');
 const userRouters = require('./api/routes/users');
+const postRouters = require('./api/routes/v1')
 
 mongoose.connect("mongodb+srv://node-shop:" + process.env.MONGO_ATLAS_PW +
     "@node-rest-shop.4ggjs.mongodb.net/db_nuxtjs?retryWrites=true&w=majority", {
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
 app.use('/products', productRoutes);
 app.use('/orders', orderRouters);
 app.use('/users', userRouters);
+app.use('/v1', postRouters);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

@@ -7,9 +7,11 @@
             id="input-1"
             v-model="form.title"
             type="text"
-            placeholder="Enter title"
+            maxLength="50"
+            placeholder="Title"
             required
-          ></b-form-input>
+          >
+          </b-form-input>
         </b-form-group>
 
         <b-form-group
@@ -20,16 +22,25 @@
           <b-form-input
             id="input-2"
             v-model="form.description"
+            type="text"
+            maxLength="500"
             placeholder="Description"
             required
-          ></b-form-input>
+          >
+          </b-form-input>
         </b-form-group>
 
-        <!-- <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div> -->
-
-        <!-- Plain mode -->
-        <!-- <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
-        <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div> -->
+        <b-form-group id="input-group-3" label="Image:" label-for="input-3">
+          <b-form-input
+            id="input-3"
+            v-model="form.image"
+            type="text"
+            placeholder="Image"
+          >
+          </b-form-input>
+          <br />
+          Selected file: {{ form.image }}
+        </b-form-group>
 
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -42,6 +53,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     data() {
       return {
@@ -50,23 +63,43 @@
           description: '',
           image: ''
         },
-        show: true,
-        file1: null,
-        file2: null
+        show: true
       }
     },
     methods: {
       onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
+        event.preventDefault();
+
+         let data = {
+           title: this.form.title,
+           description: this.form.description,
+           image: this.form.image
+         }
+
+        var titleLength = data.title.length;
+        var descriptionLength = data.description.length;
+        
+         axios({
+           method: 'post',
+           url: 'http://localhost:3200/v1/api/post',
+           data: {
+              title: this.form.title,
+              description: this.form.description,
+              image: this.form.image
+           }
+         })
+         .then(res => {
+           console.log(res.data);
+         })
+         .catch(error => {
+           console.log(error.err);
+         });
       },
       onReset(event) {
         event.preventDefault()
-        // Reset our form values
         this.form.email = ''
         this.form.description = ''
-        this.form.file2 = ''
-        // Trick to reset/clear native browser form validation state
+        this.form.image = ''
         this.show = false
         this.$nextTick(() => {
           this.show = true
