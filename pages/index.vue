@@ -89,18 +89,22 @@
            }
          })
          .then(res => {
-           if(res.data.code == 1){
-             alert("ต้องกรอกข้อมูลทุกช่อง");
-           }else if(res.data.code == 2){
-             alert("Title มีความยาวสูงสุด 50 อักขระ");
-           }else if(res.data.code == 3){
-             alert("Description มีความยาวสูงสุด 500 อักขระ");
+           console.log(res.data.status);
+           const check = res.data.status;
+           if(check == 1){
+              alert("บันทึกข้อมูลสำเร็จ");
+           }else if(check == 2){
+              alert("Tile มีข้อความเกิน 50 ตัวอักษร / Description มีข้อความเกิน 500 ตัวอักษร");
+           }else if(check == 3){
+              alert("Tile มีข้อความเกิน 50 ตัวอักษร");
+           }else if(check == 4){
+              alert("Description มีข้อความเกิน 500 ตัวอักษร");
            }else{
-             alert("บันทึกข้อมูลสำเร็จ");
-           }  
+              alert("ต้องกรอกข้อมูลให้ครบทุกช่อง");
+           }
          })
-         .catch(error => {
-           console.log(error.err);
+         .catch(err => {
+           console.log(err);
          });
       },
       onReset(event) {
