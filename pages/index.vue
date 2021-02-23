@@ -89,7 +89,15 @@
            }
          })
          .then(res => {
-           console.log(res.data);
+           if(res.data.code == 1){
+             alert("ต้องกรอกข้อมูลทุกช่อง");
+           }else if(res.data.code == 2){
+             alert("Title มีความยาวสูงสุด 50 อักขระ");
+           }else if(res.data.code == 3){
+             alert("Description มีความยาวสูงสุด 500 อักขระ");
+           }else{
+             alert("บันทึกข้อมูลสำเร็จ");
+           }  
          })
          .catch(error => {
            console.log(error.err);
